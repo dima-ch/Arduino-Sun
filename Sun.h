@@ -22,8 +22,6 @@
 #ifndef Sun_h
 #define Sun_h
 
-#include <arduino.h>
-
 class Sun 
 {
   public:
