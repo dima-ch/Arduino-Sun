@@ -31,6 +31,11 @@ Sun::Sun(float lat, float lon) {
   _lon = lon;
 }
 
+double floatmod(double a, double b)
+{
+    return (a - b * floor(a / b));
+}
+
 /*
  * Calculates sunrise and sunset times based on current time. All times are in Unix Timestamp format.
  */
@@ -42,11 +47,11 @@ void Sun::getRiseSet(unsigned long unixTime, unsigned long &sunrise, unsigned lo
   // Mean solar noon
   float Jstar = -_lon / 360 + n;
   // Solar mean anomaly
-  float M = fmod((357.5291 + 0.98560028 * Jstar), 360);
+  float M = floatmod((357.5291 + 0.98560028 * Jstar), 360);
   // Equation of the center
   float C = 1.9148 * sin(M / 360 * 2 * pi) + 0.02 * sin(2 * M / 360 * 2 * pi) + 0.0003 * sin(3 * M * 360 * 2 * pi);
   // Ecliptic longitude
-  float lambda = fmod((M + C + 180 + 102.9372), 360);
+  float lambda = floatmod((M + C + 180 + 102.9372), 360);
   // Solar transit
   float Jtransit = Jstar + (0.0053 * sin(M / 360.0 * 2.0 * pi) - 0.0069 * sin(2.0 * (lambda / 360.0 * 2.0 * pi)));
   // Declination of the Sun
