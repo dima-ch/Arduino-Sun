@@ -1,4 +1,6 @@
 # Arduino-Sun
+changes for esp8266
+
 Arduino library for calculating sunrise and sunset times.
 
 Calculations are done using [the sunrise equation](https://guides.github.com/features/mastering-markdown/).
