@@ -20,6 +20,7 @@
 */
 
 #include "Sun.h"
+#include <math.h>
 
 const float pi = 3.14159265;
 
